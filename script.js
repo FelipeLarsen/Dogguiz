@@ -78,7 +78,7 @@ function renderQuiz(imgUrl, correctAnswer, choices) {
 }
 
 async function loadQuizData() {
-    document.getElementById("image-frame").textContent = "Fetching doggo...";
+    document.getElementById("image-frame").textContent = "Wait...";
 
     const doggoImgUrl = await fetchMessage(RANDOM_IMG_ENDPOINT);
     const correctBreed = getBreedFromURL(doggoImgUrl);
