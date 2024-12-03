@@ -37,6 +37,11 @@ async function fetchMessage(url) {
 
 function renderButtons(choicesArray, correctAnswer) {
     function buttonHandler(e) {
+        const buttons = document.querySelectorAll("#options button");
+        buttons.forEach(button => {
+            button.disabled = true;
+        });
+
         if (e.target.value === correctAnswer) {
             e.target.classList.add("correct");
         } else {
