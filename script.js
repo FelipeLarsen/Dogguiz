@@ -43,16 +43,22 @@ function renderButtons(choicesArray, correctAnswer) {
             e.target.classList.add("incorrect");
             document.querySelector(`button[value="${correctAnswer}"]`).classList.add("correct");
         }
+
+        setTimeout(async () => {
+            const [newImageUrl, newCorrectAnswer, newChoices] = await loadQuizData();
+            renderQuiz(newImageUrl, newCorrectAnswer, newChoices);
+        }, 2000);
     }
 
     const options = document.getElementById("options");
+    options.replaceChildren();
 
     choicesArray.map(choice => {
         let button = document.createElement("button");
         button.value = button.name = button.textContent = choice;
         button.addEventListener("click", buttonHandler);
         options.appendChild(button);
-    })
+    });
 }
 
 function renderQuiz(imgUrl, correctAnswer, choices) {
